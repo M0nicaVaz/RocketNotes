@@ -59,4 +59,10 @@ export default createGlobalStyle`
         filter: brightness(0.9);
     }
 
+    @media (max-width: 769px) {
+   ::-webkit-scrollbar {
+    width: 3px;
+    }
+  }
+
 `;

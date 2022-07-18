@@ -16,6 +16,17 @@ export const Container = styled.div`
     'newnote content';
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+
+  @media (max-width: 769px) {
+    grid-template-columns: auto;
+    grid-template-rows: 6.5rem 12rem auto 4.4rem 4.4rem;
+    grid-template-areas:
+      'header'
+      'search'
+      'content'
+      'newnote'
+      'brand';
+  }
 `;
 
 export const Brand = styled.div`
@@ -28,9 +39,29 @@ export const Brand = styled.div`
 
   background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 
+  > svg {
+    display: none;
+  }
+
   > h1 {
     font-size: 2.4rem;
     color: ${({ theme }) => theme.COLORS.ORANGE};
+  }
+
+  @media (max-width: 769px) {
+    gap: 2rem;
+    padding: 0 8rem;
+
+    > svg {
+      display: block;
+      cursor: pointer;
+      font-size: 2.2rem;
+      color: ${({ theme }) => theme.COLORS.GRAY_100};
+
+      &:hover {
+        color: ${({ theme }) => theme.COLORS.GRAY_300};
+      }
+    }
   }
 `;
 
@@ -38,11 +69,32 @@ export const Menu = styled.ul`
   grid-area: menu;
   background: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 
-  padding-top: 6.4rem;
+  padding-top: 4.4rem;
   text-align: center;
+  overflow: auto;
 
   > li {
     margin-bottom: 2.4rem;
+
+    > svg {
+      display: none;
+    }
+  }
+
+  @media (max-width: 769px) {
+    width: ${({ isOpen }) => (isOpen ? `100%` : `0%`)};
+    height: ${({ isOpen }) => (isOpen ? `100vh` : `0vh`)};
+    display: ${({ isOpen }) => (isOpen ? `block` : `none`)};
+    position: absolute;
+
+    > li {
+      svg {
+        display: ${({ isOpen }) => (isOpen ? `inline-block` : `none`)};
+        cursor: pointer;
+        font-size: 2.6rem;
+        color: ${({ theme }) => theme.COLORS.RED};
+      }
+    }
   }
 `;
 
@@ -55,6 +107,7 @@ export const Content = styled.div`
   grid-area: content;
   padding: 0 6.4rem;
   overflow-y: auto;
+  overflow-x: hidden;
 `;
 
 export const NewNote = styled(Link)`

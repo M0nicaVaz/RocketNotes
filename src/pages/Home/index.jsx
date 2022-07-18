@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FiPlus } from 'react-icons/fi';
+import { FiPlus, FiMenu, FiX } from 'react-icons/fi';
 
 import { api } from '../../services/api';
 
@@ -17,6 +17,7 @@ export function Home() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [search, setSearch] = useState('');
   const [notes, setNotes] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -62,12 +63,16 @@ export function Home() {
   return (
     <Container>
       <Brand>
+        <FiMenu onClick={() => setIsOpen(!isOpen)} />
         <h1>Rocketnotes</h1>
       </Brand>
 
       <Header />
 
-      <Menu>
+      <Menu isOpen={isOpen}>
+        <li>
+          <FiX onClick={() => setIsOpen(!isOpen)} />
+        </li>
         <li>
           <ButtonText
             title="Todos"
