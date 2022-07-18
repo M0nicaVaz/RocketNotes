@@ -101,6 +101,10 @@ export const Menu = styled.ul`
 export const Search = styled.div`
   grid-area: search;
   padding: 6.4rem 6.4rem 0;
+
+  @media (max-width: 769px) {
+    padding: 6.4rem 3rem 0;
+  }
 `;
 
 export const Content = styled.div`
@@ -108,6 +112,10 @@ export const Content = styled.div`
   padding: 0 6.4rem;
   overflow-y: auto;
   overflow-x: hidden;
+
+  @media (max-width: 769px) {
+    padding: 0 3rem;
+  }
 `;
 
 export const NewNote = styled(Link)`

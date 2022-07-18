@@ -13,6 +13,10 @@ export const Container = styled.header`
   justify-content: space-between;
 
   padding: 0 8rem;
+
+  @media (max-width: 769px) {
+    padding: 0 3rem;
+  }
 `;
 
 export const Profile = styled(Link)`

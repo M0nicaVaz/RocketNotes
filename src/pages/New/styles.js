@@ -13,6 +13,10 @@ export const Container = styled.div`
   > main {
     grid-area: content;
     overflow-y: auto;
+
+    h1 {
+      font-size: clamp(2.4rem, 2.2rem + 1vw, 3.2rem);
+    }
   }
 
   .tags {
@@ -37,5 +41,9 @@ export const Form = styled.form`
       font-size: 2rem;
       color: ${({ theme }) => theme.COLORS.GRAY_100};
     }
+  }
+
+  @media (max-width: 769px) {
+    padding: 0 3rem;
   }
 `;

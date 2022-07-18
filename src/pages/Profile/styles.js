@@ -23,6 +23,12 @@ export const Container = styled.div`
       border: none;
     }
   }
+
+  @media (max-width: 769px) {
+    header {
+      padding: 0 3rem;
+    }
+  }
 `;
 
 export const Form = styled.form`
@@ -31,6 +37,10 @@ export const Form = styled.form`
 
   > div:nth-child(4) {
     margin-top: 2.4rem;
+  }
+
+  @media (max-width: 769px) {
+    padding: 0 3rem;
   }
 `;
 

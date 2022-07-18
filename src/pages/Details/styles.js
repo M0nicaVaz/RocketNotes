@@ -14,6 +14,10 @@ export const Container = styled.div`
     grid-area: content;
     overflow-y: scroll;
     padding: 6.4rem 0;
+
+    @media (max-width: 769px) {
+      padding: 3rem;
+    }
   }
 `;
 
@@ -41,9 +45,10 @@ export const Content = styled.div`
   }
 
   > h1 {
-    font-size: 3.6rem;
+    font-size: clamp(2.4rem, 2.2rem + 1vw, 3.6rem);
+
     font-weight: 500;
-    padding-top: 6.4rem;
+    padding-top: 4rem;
   }
 
   > p {

@@ -21,6 +21,8 @@ export const Container = styled.button`
   > footer {
     width: 100%;
     display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 
     margin-top: 2.4rem;
   }
