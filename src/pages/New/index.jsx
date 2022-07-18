@@ -52,26 +52,29 @@ export function New() {
       return alert('Digite o título da nota!');
     }
 
-    if (newLink) {
-      return alert(
-        'Você deixou um link no campo para adicionar! Clique para adicionar ou deixe o campo vazio.'
-      );
-    }
-
     if (newTag) {
       return alert(
         'Você deixou uma tag no campo para adicionar! Clique para adicionar ou deixe o campo vazio.'
       );
     }
 
-    await api.post('/notes', {
-      title,
-      description,
-      tags,
-      links,
-    });
+    if (newLink) {
+      return alert(
+        'Você deixou um link no campo para adicionar! Clique para adicionar ou deixe o campo vazio.'
+      );
+    }
 
-    alert('Nota criada com sucesso!');
+    try {
+      await api.post('/notes', {
+        title,
+        description,
+        tags,
+        links,
+      });
+    } catch (e) {
+      alert(e.message);
+    }
+
     navigate(-1);
   }
 
