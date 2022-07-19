@@ -20,7 +20,7 @@ export const Container = styled.div`
 
   @media (max-width: 769px) {
     grid-template-columns: auto;
-    grid-template-rows: 6.5rem 12rem auto 4.4rem 4.4rem;
+    grid-template-rows: 6.5rem 12rem auto 6.4rem 6.4rem;
     grid-template-areas:
       'header'
       'search'
@@ -138,5 +138,9 @@ export const NewNote = styled(Link)`
 
   svg {
     margin-right: 8px;
+  }
+
+  @media (max-width: 769px) {
+    font-size: 1.8rem;
   }
 `;

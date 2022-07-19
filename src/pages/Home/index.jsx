@@ -64,7 +64,7 @@ export function Home() {
     <Container>
       <Brand>
         <FiMenu onClick={() => setIsOpen(!isOpen)} />
-        <h1>Rocketnotes</h1>
+        <h1>RocketNotes</h1>
       </Brand>
 
       <Header />
