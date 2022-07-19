@@ -8,10 +8,12 @@ import { ButtonText } from '../../components/ButtonText';
 
 import { Section } from '../../components/Section';
 import { Tag } from '../../components/Tag';
+import { Modal } from '../../components/Modal';
 import { api } from '../../services/api';
 
 export function Details() {
   const [data, setData] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const params = useParams();
   const navigate = useNavigate();
@@ -20,13 +22,13 @@ export function Details() {
     navigate(-1);
   }
 
-  async function handleRemove() {
-    const confirm = window.confirm('Deseja realmente excluir esta nota?');
+  function handleModal() {
+    setIsOpen(!isOpen);
+  }
 
-    if (confirm) {
-      await api.delete(`/notes/${params.id}`);
-      navigate(-1);
-    }
+  async function handleRemove() {
+    await api.delete(`/notes/${params.id}`);
+    navigate(-1);
   }
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export function Details() {
       {data && (
         <main>
           <Content>
-            <ButtonText title="Excluir Nota" onClick={handleRemove} />
+            <ButtonText title="Excluir Nota" onClick={handleModal} />
 
             <h1>{data.title}</h1>
             <p>{data.description}</p>
@@ -76,6 +78,11 @@ export function Details() {
           </Content>
         </main>
       )}
+
+      <Modal isOpen={isOpen}>
+        <button onClick={handleModal}>Cancelar</button>
+        <button onClick={handleRemove}>Excluir</button>
+      </Modal>
     </Container>
   );
 }
