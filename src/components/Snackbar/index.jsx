@@ -8,7 +8,7 @@ export function Snackbar({ isOpen, onClose, children }) {
   useEffect(() => {
     setTimeout(() => {
       setTimeIsUp(true);
-    }, 8000);
+    }, 6000);
   }, []);
 
   if (timeIsUp) {

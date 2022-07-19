@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+
   display: grid;
 
   grid-template-columns: 25rem auto;
@@ -82,9 +83,16 @@ export const Menu = styled.ul`
   }
 
   @media (max-width: 769px) {
-    width: ${({ isOpen }) => (isOpen ? `100%` : `0%`)};
+    width: ${({ isOpen }) => (isOpen ? `50%` : `0%`)};
     height: ${({ isOpen }) => (isOpen ? `100vh` : `0vh`)};
-    display: ${({ isOpen }) => (isOpen ? `block` : `none`)};
+
+    right: ${({ isOpen }) => (isOpen ? `0` : `-20px`)};
+    opacity: ${({ isOpen }) => (isOpen ? `1` : `0`)};
+    visibility: ${({ isOpen }) => (isOpen ? `visible` : `hidden`)};
+
+    transition: all 200ms ease-in-out;
+
+    z-index: 9999;
     position: absolute;
 
     > li {

@@ -33,6 +33,8 @@ export default createGlobalStyle`
         color: ${({ theme }) => theme.COLORS.WHITE};
     
         -webkit-font-smoothing: antialiased;
+        
+        overflow-x: hidden;
     }
 
 
