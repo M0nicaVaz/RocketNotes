@@ -8,10 +8,12 @@ import { NoteItem } from '../../components/NoteItem';
 import { Section } from '../../components/Section';
 import { Button } from '../../components/Button';
 import { ButtonText } from '../../components/ButtonText';
+import { Snackbar } from '../../components/Snackbar';
 
 import { api } from '../../services/api';
 
 import { Container, Form } from './styles';
+import { useEffect } from 'react';
 
 export function New() {
   const [title, setTitle] = useState('');
@@ -22,6 +24,10 @@ export function New() {
 
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState('');
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [type, setType] = useState('success');
+  const [alertMessage, setAlertMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -47,21 +53,33 @@ export function New() {
     setTags((prevState) => prevState.filter((tag) => tag !== deleted));
   }
 
+  function handleClose(event) {
+    event.preventDefault();
+    setIsOpen(!isOpen);
+
+    return null;
+  }
+
   async function handleNewNote() {
     if (!title) {
-      return alert('Digite o título da nota!');
+      setIsOpen(true);
+      setAlertMessage('Digite o título da nota!');
+
+      return null;
     }
 
     if (newTag) {
-      return alert(
-        'Você deixou uma tag no campo para adicionar! Clique para adicionar ou deixe o campo vazio.'
-      );
+      setIsOpen(true);
+      setAlertMessage('Você deixou uma tag no campo para adicionar!');
+
+      return null;
     }
 
     if (newLink) {
-      return alert(
-        'Você deixou um link no campo para adicionar! Clique para adicionar ou deixe o campo vazio.'
-      );
+      setIsOpen(true);
+      setAlertMessage('Você deixou um link no campo para adicionar!');
+
+      return null;
     }
 
     try {
@@ -76,6 +94,7 @@ export function New() {
     }
 
     navigate(-1);
+    return null;
   }
 
   return (
@@ -138,6 +157,10 @@ export function New() {
               />
             </div>
           </Section>
+
+          <Snackbar type={type} isOpen={isOpen} onClose={handleClose}>
+            {alertMessage}
+          </Snackbar>
 
           <Button title="Salvar" onClick={handleNewNote} />
         </Form>
