@@ -85,7 +85,7 @@ export const Menu = styled.ul`
   @media (max-width: 769px) {
     width: ${({ isOpen }) => (isOpen ? `100%` : `0%`)};
     height: ${({ isOpen }) => (isOpen ? `35vh` : `0vh`)};
-    bottom: ${({ isOpen }) => (isOpen ? `12.8rem` : `0px`)};
+    bottom: ${({ isOpen }) => (isOpen ? `8.8rem` : `0px`)};
 
     opacity: ${({ isOpen }) => (isOpen ? `1` : `0`)};
     visibility: ${({ isOpen }) => (isOpen ? `visible` : `hidden`)};
@@ -94,15 +94,6 @@ export const Menu = styled.ul`
 
     z-index: 9999;
     position: absolute;
-
-    > li {
-      svg {
-        display: ${({ isOpen }) => (isOpen ? `inline-block` : `none`)};
-        cursor: pointer;
-        font-size: 2.6rem;
-        color: ${({ theme }) => theme.COLORS.RED};
-      }
-    }
   }
 `;
 

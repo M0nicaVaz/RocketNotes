@@ -63,16 +63,17 @@ export function Home() {
   return (
     <Container>
       <Brand>
-        <FiMenu onClick={() => setIsOpen(!isOpen)} />
+        {isOpen ? (
+          <FiX onClick={() => setIsOpen(!isOpen)} />
+        ) : (
+          <FiMenu onClick={() => setIsOpen(!isOpen)} />
+        )}
         <h1>RocketNotes</h1>
       </Brand>
 
       <Header />
 
       <Menu isOpen={isOpen}>
-        <li>
-          <FiX onClick={() => setIsOpen(!isOpen)} />
-        </li>
         <li>
           <ButtonText
             title="Todos"
