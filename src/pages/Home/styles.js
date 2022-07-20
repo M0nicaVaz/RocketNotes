@@ -85,7 +85,7 @@ export const Menu = styled.ul`
   @media (max-width: 769px) {
     width: ${({ isOpen }) => (isOpen ? `100%` : `0%`)};
     height: ${({ isOpen }) => (isOpen ? `35vh` : `0vh`)};
-    bottom: ${({ isOpen }) => (isOpen ? `8.2rem` : `0px`)};
+    bottom: ${({ isOpen }) => (isOpen ? `7.8rem` : `0px`)};
 
     opacity: ${({ isOpen }) => (isOpen ? `1` : `0`)};
     visibility: ${({ isOpen }) => (isOpen ? `visible` : `hidden`)};
