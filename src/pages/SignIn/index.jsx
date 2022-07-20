@@ -41,7 +41,7 @@ export function SignIn() {
         <h2>Faça seu login</h2>
         <Input
           placeholder="E-mail"
-          type="text"
+          type="email"
           icon={FiMail}
           onChange={(e) => setEmail(e.target.value)}
         />

@@ -20,7 +20,7 @@ export const Container = styled.div`
 
   @media (max-width: 769px) {
     grid-template-columns: auto;
-    grid-template-rows: 6.5rem 12rem auto 6.4rem 6.4rem;
+    grid-template-rows: 6.5rem 12rem auto 6.4rem 6.6rem;
     grid-template-areas:
       'header'
       'search'
@@ -85,7 +85,7 @@ export const Menu = styled.ul`
   @media (max-width: 769px) {
     width: ${({ isOpen }) => (isOpen ? `100%` : `0%`)};
     height: ${({ isOpen }) => (isOpen ? `35vh` : `0vh`)};
-    bottom: ${({ isOpen }) => (isOpen ? `8.8rem` : `0px`)};
+    bottom: ${({ isOpen }) => (isOpen ? `8.2rem` : `0px`)};
 
     opacity: ${({ isOpen }) => (isOpen ? `1` : `0`)};
     visibility: ${({ isOpen }) => (isOpen ? `visible` : `hidden`)};
