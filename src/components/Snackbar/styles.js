@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.COLORS.RED};
-  color: ${({ theme }) => theme.COLORS.WHITE};
+  background-color: ${({ theme }) => theme.COLORS.ORANGE};
+  color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
 
   position: fixed;
   top: 100px;
@@ -34,7 +34,7 @@ export const Container = styled.div`
     padding: 0;
     border: 0;
     background-color: transparent;
-    color: ${({ theme }) => theme.COLORS.WHITE};
+    color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
   }
 
   @media (max-width: 769px) {

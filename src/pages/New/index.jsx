@@ -13,7 +13,6 @@ import { Snackbar } from '../../components/Snackbar';
 import { api } from '../../services/api';
 
 import { Container, Form } from './styles';
-import { useEffect } from 'react';
 
 export function New() {
   const [title, setTitle] = useState('');
@@ -26,7 +25,6 @@ export function New() {
   const [newTag, setNewTag] = useState('');
 
   const [isOpen, setIsOpen] = useState(false);
-  const [type, setType] = useState('success');
   const [alertMessage, setAlertMessage] = useState('');
 
   const navigate = useNavigate();
@@ -158,7 +156,7 @@ export function New() {
             </div>
           </Section>
 
-          <Snackbar type={type} isOpen={isOpen} onClose={handleClose}>
+          <Snackbar isOpen={isOpen} onClose={handleClose}>
             {alertMessage}
           </Snackbar>
 

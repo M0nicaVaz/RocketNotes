@@ -83,14 +83,14 @@ export const Menu = styled.ul`
   }
 
   @media (max-width: 769px) {
-    width: ${({ isOpen }) => (isOpen ? `50%` : `0%`)};
-    height: ${({ isOpen }) => (isOpen ? `100vh` : `0vh`)};
+    width: ${({ isOpen }) => (isOpen ? `100%` : `0%`)};
+    height: ${({ isOpen }) => (isOpen ? `35vh` : `0vh`)};
+    bottom: ${({ isOpen }) => (isOpen ? `12.8rem` : `0px`)};
 
-    right: ${({ isOpen }) => (isOpen ? `0` : `-20px`)};
     opacity: ${({ isOpen }) => (isOpen ? `1` : `0`)};
     visibility: ${({ isOpen }) => (isOpen ? `visible` : `hidden`)};
 
-    transition: all 200ms ease-in-out;
+    transition: all 250ms ease-in-out;
 
     z-index: 9999;
     position: absolute;

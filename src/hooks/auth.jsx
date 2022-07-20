@@ -6,6 +6,9 @@ export const AuthContext = createContext({});
 function AuthProvider({ children }) {
   const [data, setData] = useState({});
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
+
   async function signIn({ email, password }) {
     try {
       const response = await api.post('/sessions', { email, password });
@@ -18,9 +21,11 @@ function AuthProvider({ children }) {
       setData({ user, token });
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        setIsOpen(true);
+        setAlertMessage(error.response.data.message);
       } else {
-        alert('Não foi possível entrar.');
+        setIsOpen(true);
+        setAlertMessage('Não foi possível entrar.');
       }
     }
   }
@@ -46,12 +51,16 @@ function AuthProvider({ children }) {
       localStorage.setItem('@rocketnotes:user', JSON.stringify(user));
 
       setData({ user, token: data.token });
-      alert('Perfil atualizado!');
+
+      setIsOpen(true);
+      setAlertMessage('Perfil atualizado!');
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        setIsOpen(true);
+        setAlertMessage(error.response.data.message);
       } else {
-        alert('Não foi possível atualizar o perfil.');
+        setIsOpen(true);
+        setAlertMessage('Não foi possível atualizar o perfil.');
       }
     }
   }
@@ -71,7 +80,15 @@ function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ signIn, signOut, updateProfile, user: data.user }}
+      value={{
+        isOpen,
+        alertMessage,
+        setIsOpen,
+        signIn,
+        signOut,
+        updateProfile,
+        user: data.user,
+      }}
     >
       {children}
     </AuthContext.Provider>
