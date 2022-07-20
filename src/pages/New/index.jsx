@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Header } from '../../components/Header';
@@ -94,6 +94,12 @@ export function New() {
     navigate(-1);
     return null;
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 5000);
+  }, [isOpen]);
 
   return (
     <Container>

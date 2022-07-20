@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,11 +9,12 @@ import { api } from '../../services/api';
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { Snackbar } from '../../components/Snackbar';
 
 import { Container, Form, Avatar } from './styles';
 
 export function Profile() {
-  const { user, updateProfile } = useAuth();
+  const { user, updateProfile, isOpen, setIsOpen, alertMessage } = useAuth();
 
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
@@ -53,6 +54,19 @@ export function Profile() {
     const imagePreview = URL.createObjectURL(file);
     setAvatar(imagePreview);
   }
+
+  function handleClose(event) {
+    event.preventDefault();
+    setIsOpen(!isOpen);
+
+    return null;
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 5000);
+  }, [isOpen]);
 
   return (
     <Container>
@@ -99,6 +113,10 @@ export function Profile() {
           icon={FiLock}
           onChange={(e) => setNewPassword(e.target.value)}
         />
+
+        <Snackbar isOpen={isOpen} onClose={handleClose}>
+          {alertMessage}
+        </Snackbar>
 
         <Button title="Salvar" onClick={handleUpdate} />
       </Form>

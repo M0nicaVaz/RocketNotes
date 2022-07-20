@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  width: min(90%, 48rem);
+
   background-color: ${({ theme }) => theme.COLORS.ORANGE};
   color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
 
+  z-index: 9999;
+
   position: fixed;
-  top: 100px;
-  right: ${({ isOpen }) => (isOpen ? `20px` : `0`)};
+  top: 60px;
+  left: ${({ isOpen }) => (isOpen ? `20px` : `0`)};
 
   display: flex;
   justify-content: space-between;
@@ -39,6 +43,5 @@ export const Container = styled.div`
 
   @media (max-width: 769px) {
     top: 10vh;
-    width: 90%;
   }
 `;

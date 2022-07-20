@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
@@ -25,6 +25,12 @@ export function SignIn() {
 
     return null;
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 5000);
+  }, [isOpen]);
 
   return (
     <Container>
